@@ -6,3 +6,8 @@ It is a markdown file and as such allows for some formatting, but should also be
 ## wake combination
 Wakes are typically combined using the square of the L2 norm. However, in a distribution perhaps we could use the ideas in 
 Strang V.5 equation 10 for the weighted least squares.
+
+## Basis
+We've been discussing using something akin to radial basis functions.
+
+Perhaps we could define a surface with only, say, 2 basis functions that would have peaks and valleys accordign tot eh locations of the turbines.
