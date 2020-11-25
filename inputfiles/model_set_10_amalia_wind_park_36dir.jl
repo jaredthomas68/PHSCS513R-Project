@@ -34,11 +34,11 @@ rotor_points_y = [0.0]
 rotor_points_z = [0.0]
 
 # set flow parameters
-data = readdlm("inputfiles/windrose_amalia_72dirs.txt",  ' ', skipstart=1)
-# data = readdlm("inputfiles/windrose_amalia_36dirs.txt",  ' ', skipstart=1)
-winddirections = data[:, 1].*pi/180.0
-windspeeds = data[:,2]
-windprobabilities = data[:, 3]
+# wind_data = readdlm("inputfiles/windrose_amalia_72dirs.txt",  ' ', skipstart=1)
+data = readdlm("inputfiles/windrose_amalia_36dirs.txt",  ' ', skipstart=1)
+winddirections = wind_data[:, 1].*pi/180.0
+windspeeds = wind_data[:,2]
+windprobabilities = wind_data[:, 3]
 nstates = length(windspeeds)
 
 air_density = 1.1716  # kg/m^3
