@@ -51,6 +51,7 @@ measurementheight = zeros(nstates) .+ hub_height[1]
 cpctdata = readdlm("inputfiles/NREL5MWCPCT.txt",  ' ', skipstart=1)
 velpoints = cpctdata[:,1]
 cppoints = cpctdata[:,2]
+cpdata = cpctdata[:,1:2]
 
 # initialize power model
 power_model = ff.PowerModelCpPoints(velpoints, cppoints)
@@ -61,6 +62,7 @@ end
 
 # load thrust curve
 ctpoints = cpctdata[:,3]
+ctdata = hcat(cpctdata[:,1],cpctdata[:,3])
 
 # initialize thurst model
 ct_model = ff.ThrustModelCtPoints(velpoints, ctpoints)

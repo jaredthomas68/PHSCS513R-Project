@@ -34,10 +34,10 @@ rotor_points_y = [0.0]
 rotor_points_z = [0.0]
 
 # set flow parameters
-data = readdlm("inputfiles/windrose_amalia_36dirs.txt",  ' ', skipstart=1)
-winddirections = data[:, 1].*pi/180.0
-windspeeds = data[:,2]
-windprobabilities = data[:, 3]
+wind_data = readdlm("inputfiles/windrose_nantucket_36dir.txt",  ' ', skipstart=1)
+winddirections = wind_data[:, 1].*pi/180.0
+windspeeds = wind_data[:,2]
+windprobabilities = wind_data[:, 3]
 nstates = length(windspeeds)
 
 air_density = 1.1716  # kg/m^3
@@ -50,6 +50,8 @@ measurementheight = zeros(nstates) .+ hub_height[1]
 powerdata = readdlm("inputfiles/niayifar_vestas_v80_power_curve_observed.txt",  ',', skipstart=1)
 velpoints = powerdata[:,1]
 powerpoints = powerdata[:,2]*1E6
+cppoints = powerpoints./(0.5*air_density*rotor_area.*velpoints.^3)
+cpdata = hcat(velpoints, cppoints)
 
 # initialize power model
 power_model = ff.PowerModelPowerPoints(velpoints, powerpoints)
