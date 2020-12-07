@@ -76,10 +76,20 @@ windresource = ff.DiscretizedWindResource(winddirections, windspeeds, windprobab
 # set up wake and related models
 k = 0.0324555
 wakedeficitmodel = ff.GaussSimple(k)
-
+ 
 wakedeflectionmodel = ff.JiminezYawDeflection()
 wakecombinationmodel = ff.SumOfSquaresFreestreamSuperposition()
 localtimodel = ff.LocalTIModelNoLocalTI()
 
 # initialize model set
 model_set = ff.WindFarmModelSet(wakedeficitmodel, wakedeflectionmodel, wakecombinationmodel, localtimodel)
+
+
+
+
+# dan added
+diam = turb_diam
+wind_data = [winddirections.*pi/180, windspeeds, windprobabilities]
+ctdata = readdlm("inputfiles/iea37-10mw-ct.txt",  ' ')
+cpdata = readdlm("inputfiles/iea37-10mw-cp.txt",  ' ')
+

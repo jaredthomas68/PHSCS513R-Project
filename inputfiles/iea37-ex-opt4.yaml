@@ -1,18 +1,20 @@
 title: IEA Wind Task 37 case study 4, baseline layout
 description: baseline layout for the 25 turbine wind plant model for IEA Task 37 case study 4
+
 definitions:
-wind_plant:
-type: object
-description: specific plant design including turbine selection and placement
-properties:
-turbine:
-type: array
-items:
+  wind_plant:
+    type: object
+    description: specific plant design including turbine selection and placement
+    properties:
+      turbine:
+        type: array
+        items:
           - $ref: "iea37-10mw.yaml"    # Reference for the .yaml containing turbine attributes.
-position:
-description: an array of x and y-coordinates [x0, y0] \n [x1, y1] \n ... of wind turbine positions in cartesian coordinates
-units: m
-items:
+
+  position:
+    description: an array of x and y-coordinates [x0, y0] \n [x1, y1] \n ... of wind turbine positions in cartesian coordinates
+    units: m
+    items:
       - [10363.7833,  6490.2719]
       - [ 9894.9437,  6316.9180]
       - [ 8450.2895,  6455.3421]
@@ -94,23 +96,26 @@ items:
       - [ 6893.6257, 10365.7720]
       - [ 5806.1713, 10066.8889]
       - [ 7048.3252,  9531.4511]
-plant_energy:
-description: energy production data
-properties:
-wake_model:
-description: wake model used to calculate AEP
-items:
+
+  plant_energy:
+    description: energy production data
+    properties:
+      wake_model:
+        description: wake model used to calculate AEP
+        items:
           - $ref: "iea37-aepcalc.py"
-wind_resource:
-description: specific wind resource used to calculate AEP
-properties:
-items:
+
+      wind_resource:
+        description: specific wind resource used to calculate AEP
+        properties:
+          items:
             - $ref: "iea37-windrose-cs4.yaml"       # Reference for the .yaml containing the wind rose
-annual_energy_production:
-description: binned and total (default) annual energy production for a wind plant given a layout and binned wind rose
-units: MWh
-binned: [  64746.85731,  48565.54757,  37944.19712,  44280.63073,  55063.19289,
-100113.04060, 150211.13657, 148769.25473, 136997.00284, 134156.63805,
-173899.67085, 212214.18770, 207993.76767, 235385.31651, 209062.06090,
-209913.66060, 213333.97207, 191039.80140, 175738.03308, 111754.53649]
-default: 2861182.50569
+      
+      annual_energy_production:
+        description: binned and total (default) annual energy production for a wind plant given a layout and binned wind rose
+        units: MWh
+        binned: [  64746.85731,  48565.54757,  37944.19712,  44280.63073,  55063.19289,
+                  100113.04060, 150211.13657, 148769.25473, 136997.00284, 134156.63805,
+                  173899.67085, 212214.18770, 207993.76767, 235385.31651, 209062.06090,
+                  209913.66060, 213333.97207, 191039.80140, 175738.03308, 111754.53649]
+        default: 2861182.50569
