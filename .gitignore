@@ -1,2 +1,4 @@
 .ipynb_checkpoints/*
 PartnersParagraphs.ipynb
+.DS_Store
+.vscode/settings.json
