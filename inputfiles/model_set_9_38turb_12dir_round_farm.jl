@@ -36,7 +36,8 @@ rotor_points_z = [0.0]
 
 # set flow parameters
 wind_data = readdlm("inputfiles/windrose_nantucket_12dir.txt",  ' ', skipstart=1)
-winddirections = wind_data[:, 1].*pi/180.0
+wind_data[:, 1] *= pi/180.0
+winddirections = wind_data[:, 1]
 windspeeds = wind_data[:,2]
 windprobabilities = wind_data[:, 3]
 nstates = length(windspeeds)
