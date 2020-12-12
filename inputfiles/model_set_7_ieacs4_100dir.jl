@@ -1,5 +1,5 @@
 @everywhere import FlowFarm; const ff = FlowFarm
-
+using FLOWMath: Akima
 # based on IEA case study 4
 
 # set initial turbine x and y locations
@@ -34,10 +34,13 @@ rotor_points_z = [0.0]
 # set flow parameters
 windrose_file_name = string("./inputfiles/",fname_wr)
 winddirections, windspeeds, windprobabilities, ambient_ti = ff.get_reduced_wind_rose_YAML(windrose_file_name)
-
-# winddirections = [winddirections[1]]
-# windspeeds = [windspeeds[1]]
-# windprobabilities = [windprobabilities[1]]
+vspline = Akima(winddirections, windspeeds)
+pspline = Akima(winddirections, windprobabilities)
+windata_size = length(winddirections)
+step = 3.6
+winddirections = collect(0:step:360-step)
+windspeeds = vspline(winddirections)
+windprobabilities = pspline(winddirections)*windata_size/(360/step)
 
 nstates = length(winddirections)
 winddirections *= pi/180.0
@@ -48,17 +51,18 @@ ambient_tis = zeros(nstates) .+ ambient_ti
 measurementheight = zeros(nstates) .+ turb_hub_height
 
 # initialize power model
-power_model = ff.PowerModelPowerCurveCubic()
+cpdata = readdlm("inputfiles/iea37-10mw-cp.txt", ',')
+power_model = ff.PowerModelCpPoints(cpdata[:,1],cpdata[:,2])
 power_models = Vector{typeof(power_model)}(undef, nturbines)
 for i = 1:nturbines
     power_models[i] = power_model
 end
 
 # load thrust curve
-ct = 4.0*(1.0/3.0)*(1.0 - 1.0/3.0)
+ctdata = readdlm("inputfiles/iea37-10mw-ct.txt", ',')
 
 # initialize thurst model
-ct_model = ff.ThrustModelConstantCt(ct)
+ct_model = ff.ThrustModelCtPoints(ctdata[:,1], ctdata[:,2])
 ct_models = Vector{typeof(ct_model)}(undef, nturbines)
 for i = 1:nturbines
     ct_models[i] = ct_model
@@ -84,12 +88,6 @@ localtimodel = ff.LocalTIModelNoLocalTI()
 # initialize model set
 model_set = ff.WindFarmModelSet(wakedeficitmodel, wakedeflectionmodel, wakecombinationmodel, localtimodel)
 
-
-
-
 # dan added
 diam = turb_diam
-wind_data = [winddirections.*pi/180, windspeeds, windprobabilities]
-ctdata = readdlm("inputfiles/iea37-10mw-ct.txt",  ' ')
-cpdata = readdlm("inputfiles/iea37-10mw-cp.txt",  ' ')
-
+wind_data = hcat(winddirections, windspeeds, windprobabilities)
