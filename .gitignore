@@ -2,3 +2,5 @@
 PartnersParagraphs.ipynb
 .DS_Store
 .vscode/settings.json
+*.xlsx
+*.pdf
