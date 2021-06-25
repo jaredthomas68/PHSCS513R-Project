@@ -1,3 +1,6 @@
 .ipynb_checkpoints/*
 PartnersParagraphs.ipynb
 *.key
+*.xlsx
+*.pdf
+images/*

@@ -1,0 +1,26 @@
+﻿case,turbines,directions,model,AEP,Mean Time (ms),Error
+Round,38,12,TIP,5.04E+11,3.246,0.00
+Round,38,12,Top Hat,5.60E+11,1.789,-0.10
+Round,38,12,Multi-zone,5.90E+11,2.762,-0.15
+Round,38,12,Bastankhah,4.64E+11,4.273,0.09
+Round,38,12,LES,4.74E+11,3.1104E+11,0.06
+Round,38,36,TIP,5.08E+11,3.354,0.00
+Round,38,36,Top Hat,5.60E+11,6.968,-0.09
+Round,38,36,Multi-zone,5.84E+11,7.589,-0.13
+Round,38,36,Bastankhah,4.47E+11,11.968,0.14
+Amalia,60,36,TIP,3.63E+11,3.537,0.00
+Amalia,60,36,Top Hat,4.23E+11,8.379,-0.14
+Amalia,60,36,Multi-zone,4.39E+11,16.386,-0.17
+Amalia,60,36,Bastankhah,3.54E+11,19.514,0.02
+Amalia,60,72,TIP,9.13E+11,3.836,0.00
+Amalia,60,72,Top Hat,9.88E+11,15.903,-0.08
+Amalia,60,72,Multi-zone,1.05E+12,45.144,-0.13
+Amalia,60,72,Bastankhah,7.30E+11,51.3,0.25
+Borssele,81,100,TIP,5.11E+12,17.609,0.00
+Borssele,81,100,Top Hat,4.64E+12,49.595,0.10
+Borssele,81,100,Multi-zone,4.88E+12,120.344,0.05
+Borssele,81,100,Bastankhah,3.33E+12,99.636,0.54
+Borssele,81,360,TIP,5.11E+12,15.685,0.00
+Borssele,81,360,Top Hat,4.64E+12,143.622,0.10
+Borssele,81,360,Multi-zone,4.89E+12,270.13,0.05
+Borssele,81,360,Bastankhah,3.33E+12,360.253,0.54
