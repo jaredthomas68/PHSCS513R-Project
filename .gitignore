@@ -4,3 +4,5 @@ PartnersParagraphs.ipynb
 *.xlsx
 *.pdf
 images/*
+.DS_Store
+.vscode/settings.json

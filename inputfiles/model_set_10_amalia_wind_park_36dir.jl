@@ -1,7 +1,7 @@
 import FlowFarm; const ff = FlowFarm
 
 # set initial turbine x and y locations
-diam = 126.4
+diam = 80.0
 data = readdlm("inputfiles/layout_amalia.txt",  ' ', skipstart=1)
 turbine_x = data[:, 1]
 nturbines = length(turbine_x)
@@ -22,11 +22,11 @@ turbine_yaw = zeros(nturbines)
 
 # set turbine design parameters
 rotor_diameter = zeros(nturbines) .+ diam # m
-hub_height = zeros(nturbines) .+ 90.0   # m
-cut_in_speed = zeros(nturbines) .+3.  # m/s
+hub_height = zeros(nturbines) .+ 80.0   # m
+cut_in_speed = zeros(nturbines) .+4.  # m/s
 cut_out_speed = zeros(nturbines) .+25.  # m/s
 rated_speed = zeros(nturbines) .+11.4  # m/s
-rated_power = zeros(nturbines) .+5.0E6  # W
+rated_power = zeros(nturbines) .+2.0E6  # W
 generator_efficiency = zeros(nturbines) .+ 0.944
 
 # rotor swept area sample points (normalized by rotor radius)
@@ -36,7 +36,8 @@ rotor_points_z = [0.0]
 # set flow parameters
 # wind_data = readdlm("inputfiles/windrose_amalia_72dirs.txt",  ' ', skipstart=1)
 wind_data = readdlm("inputfiles/windrose_amalia_36dirs.txt",  ' ', skipstart=1)
-winddirections = wind_data[:, 1].*pi/180.0
+wind_data[:, 1] *= pi/180.0
+winddirections = wind_data[:, 1]
 windspeeds = wind_data[:,2]
 windprobabilities = wind_data[:, 3]
 nstates = length(windspeeds)
